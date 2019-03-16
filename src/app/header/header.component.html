@@ -1,0 +1,21 @@
+<div class="header">
+  <div id="nav-pc">
+    <ul class="nav-bar">
+      <li><a [routerLink]="[ '/' ]"><strong class="otake">OTAKE</strong></a></li>
+      <li><a [routerLink]="[ '/tickets' ]" routerLinkActive="active">TICKETS</a></li>
+      <li><a [routerLink]="[ '/students' ]" routerLinkActive="active">STUDENTS</a></li>
+    </ul>
+  </div>
+  <div id="nav-mobile">
+    <ul class="nav-bar">
+      <li><a [routerLink]="[ '/' ]"><strong class="otake">OTAKE</strong></a></li>
+      <li class="dropdown">
+        <a><i class="fas fa-bars"></i></a>
+        <div class="dropdown-content">
+          <a [routerLink]="[ '/tickets' ]" routerLinkActive="active">TICKETS</a>
+          <a [routerLink]="[ '/students' ]" routerLinkActive="active">STUDENTS</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

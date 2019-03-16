@@ -1,0 +1,43 @@
+@import '../../../styles/card.scss';
+.ticket {
+  width: 100%;
+  background: rgb(180, 218, 250);
+}
+
+.button-archive,
+.button-detele {
+  background: burlywood;
+}
+
+.button-archive:hover {
+  cursor: pointer;
+  background: brown;
+}
+
+button {
+  border: 1px;
+  border-radius: $borderRadius;
+  float: right;
+  font-size: 1em;
+}
+
+.box {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.box>div:nth-of-type(1) {
+  flex: 1 1 auto;
+}
+
+.box>div:nth-of-type(2) {
+  flex: 1 1 auto;
+}
+
+.box>div:nth-of-type(3) {
+  flex: 1 1 auto;
+}
+
+.box>div:nth-of-type(4) {
+  flex: 3 1 auto;
+}

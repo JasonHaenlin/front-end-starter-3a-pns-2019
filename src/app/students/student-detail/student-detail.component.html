@@ -1,0 +1,36 @@
+<div class="content">
+  <button class="btn-custom" (click)="goBack()">go back</button>
+
+  <div class="card-detail">
+
+    <div class="flex-element">
+      <img src="{{student.profilePicture}}" alt="<(^^)>">
+    </div>
+
+    <div class="flex-element">
+      <div><em>First Name : </em>{{student.firstName | titlecase}}</div>
+      <div><em>Last Name: </em>{{student.lastName | titlecase}}</div>
+      <div><em>email : </em>{{student.email}}</div>
+    </div>
+
+    <div class="flex-element">
+      <label for="note">Put some notes: <br>
+        <textarea type="text" id="note" [formControl]="note" placeholder="Remember, be nice!"
+          cols="60" rows="2"></textarea>
+      </label>
+      <button type="submit" class="btn-custom" (click)="addNote()">Save</button>
+      <div class="flex-list" *ngFor="let ticket of ticketList">
+        {{ticket.title}} <div>{{ticket.date | date: 'shortTime'}} <em
+            style="float:right; padding-right:1rem;">archived : {{ticket.archived}}</em></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div [@openClose] class="modal modal-open" *ngIf="active">
+  <div class="modal-box">
+    <div class="modal-body">
+      <h3>Note Saved</h3>
+    </div>
+  </div>
+  <!-- <div class="modal-background"></div> -->
+</div>

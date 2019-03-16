@@ -1,0 +1,15 @@
+@import '../../../styles/button.scss';
+@import '../../../styles/form.scss';
+.form-box {
+  width: 20em;
+}
+
+.remove-btn {
+  background: #f5673c;
+  margin-right: 0.5rem;
+  height: 1.65rem;
+}
+
+.inline-form {
+  display: flex;
+}

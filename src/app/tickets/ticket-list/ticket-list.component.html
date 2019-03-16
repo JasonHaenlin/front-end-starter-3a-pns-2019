@@ -1,0 +1,13 @@
+<div style="display: flex; justify-content: flex-end">
+  <button type="button" class="btn btn-info button-archive" (click)="archiveStatus()">{{showStatus}}
+    archived</button>
+</div>
+<div class="ticket-list">
+  <div class="ticket" *ngFor="let ticket of ticketList">
+    <ng-container *ngIf="showArchived || !ticket.archived">
+      <app-ticket [ticket]="ticket" (ticketHasBeenSelected)="ticketHasBeenSelected($event)"
+        (ticketHasBeenArchived)="ticketHasBeenArchived($event)">
+      </app-ticket>
+    </ng-container>
+  </div>
+</div>

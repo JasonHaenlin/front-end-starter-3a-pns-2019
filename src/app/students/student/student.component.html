@@ -1,0 +1,10 @@
+<div class="content">
+  <div class="avatar" routerLink="/students/{{student.id}}">
+    <img src="{{student.profilePicture}}" alt="<(^^)>">
+  </div>
+  <div>{{student.firstName | titlecase}}</div>
+  <div>{{student.lastName | titlecase}}</div>
+  <div>{{student.email}}</div>
+  <button type="button" (click)="deleteStudent()"><i class="fas fa-user-times"></i></button>
+</div>
+<a href="/students/{{student.id}}"></a>

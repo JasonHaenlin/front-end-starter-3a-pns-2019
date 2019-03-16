@@ -1,0 +1,23 @@
+.content {
+  display: flex;
+  margin-top: 72px;
+}
+
+.app-form {
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+.app-list {
+  flex: 1;
+}
+
+@media (max-width: 600px) {
+  .content {
+    display: block;
+  }
+  .app-form {
+    display: flex;
+    flex-direction: column;
+  }
+}

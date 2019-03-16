@@ -1,0 +1,17 @@
+<div class="student-list">
+  <div class="search-box">
+    <div>search :</div>
+    <input #searchBox (input)="search(searchBox.value)" />
+  </div>
+  <div class="card-header">
+    <div></div>
+    <div>First Name</div>
+    <div>Last Name</div>
+    <div>Email</div>
+  </div>
+
+  <div [@shrinkOut] class="student" *ngFor="let student of studentList">
+    <app-student [student]="student" (studentHasBeenDeleted)="studentHasBeenDeleted($event)">
+    </app-student>
+  </div>
+</div>

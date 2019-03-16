@@ -1,0 +1,47 @@
+<div class="card ticket" (click)="selectTicket()">
+  <!-- we use the {{ }} syntax to display the data, more info: https://angular.io/guide/displaying-data-->
+  <h3>Titre : {{ticket.title}}</h3>
+  <div class="box">
+    <!-- ticket date -->
+    <div>
+      <span class="fas fa-calendar-alt"></span>
+      {{ticket.date | date: 'shortTime'}} &nbsp;&nbsp;
+    </div>
+    <!-- ticket major -->
+    <div>
+      <span [ngSwitch]="ticket.major">
+        <span *ngSwitchCase="'SI'">
+          <span class="fas fa-laptop-code"></span>
+        </span>
+        <span *ngSwitchCase="'GE'">
+          <span class="fas fa-laptop-code"></span>
+        </span>
+        <span *ngSwitchCase="'GB'">
+          <span class="fas fa-laptop-code"></span>
+        </span>
+        <span *ngSwitchDefault>
+          <span class="fas fa-laptop-code"></span>
+        </span>
+      </span>
+      {{ticket.major}} &nbsp;&nbsp;
+    </div>
+    <!-- ticket student name -->
+    <div>
+      <span class="far fa-user"></span>
+      <div *ngFor="let s of ticket.student">
+        <div *ngIf="s.lastName">{{s.lastName | slice:0:1 | uppercase}}.
+          {{s.firstName | titlecase}}</div>
+      </div>
+    </div>
+    <!-- archive button -->
+    <div>
+      <ng-container *ngIf="ticket.archived === false; else disabledButton">
+        <button type="button" class="btn button-archive" (click)="archiveTicket()">Archive</button>
+      </ng-container>
+      <ng-template #disabledButton>
+        <!-- <button disabled="disabled">Archived</button> -->
+        <button type="button" class="btn button-archive" (click)="archiveTicket()">Archived</button>
+      </ng-template>
+    </div>
+  </div>
+</div>

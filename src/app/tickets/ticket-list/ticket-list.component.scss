@@ -1,0 +1,41 @@
+// You can apply style directly to a component
+@import '../../../styles/variables.scss';
+* app-ticket {
+  margin: 0.2em;
+}
+
+.ticket {
+  width: 25rem
+}
+
+.ticket-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+button:hover {
+  background: cornsilk;
+  cursor: pointer;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  font-size: 1em;
+}
+
+.button-archive {
+  margin-top: 1em;
+  margin-right: 1em;
+  border-radius: $borderRadius;
+  background: cadetblue;
+  height: 35px;
+}
+
+@media (max-width: 768px) {
+  .ticket {
+    width: 95%;
+  }
+}

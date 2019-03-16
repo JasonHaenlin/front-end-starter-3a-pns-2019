@@ -1,0 +1,73 @@
+@import '../../styles/variables';
+/**
+ Use :host to apply some style to your entire component
+ */
+
+:host {
+  color: $white;
+}
+
+.header {
+  background: $linearGradient;
+  padding: 1rem;
+}
+
+li {
+  display: inline;
+  margin: 1rem;
+}
+
+.nav-bar {
+  list-style-type: none;
+  margin: 0;
+}
+
+li a {
+  text-decoration: none;
+  color: white;
+  padding: 8px 16px;
+  transition: color 0.2s ease;
+}
+
+li.dropdown {
+  float: right;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: flex;
+  flex-direction: column;
+  background: rgb(115, 167, 226);
+  margin-left: -90px;
+  border-radius: $borderRadius;
+}
+
+li:not(:first-child) a:hover {
+  color: cadetblue;
+}
+
+.active {
+  background: rgba(45, 151, 223, 0.445);
+  border-radius: $borderRadius;
+}
+
+#nav-mobile {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  #nav-pc {
+    display: none;
+  }
+  #nav-mobile {
+    display: block;
+  }
+  li {
+    margin: 0;
+  }
+}
