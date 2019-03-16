@@ -47,6 +47,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-redux/store": "^9.0.0",
     "@angular/animations": "^7.2.7",
     "@angular/cdk": "^7.3.3",
     "@angular/common": "^7.2.7",
@@ -58,6 +59,9 @@
     "@angular/router": "^7.2.7",
     "core-js": "^2.6.5",
     "dotenv": "^6.2.0",
+    "ng-redux": "^4.1.0",
+    "redux": "^4.0.1",
+    "redux-logger": "^3.0.6",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
     "zone.js": "^0.8.29"

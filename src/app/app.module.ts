@@ -12,6 +12,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { StudentComponent, StudentDetailComponent, StudentFormComponent, StudentListComponent, StudentPageComponent } from './students';
 import { TicketComponent, TicketFormComponent, TicketListComponent, TicketPageComponent } from './tickets';
 import { SearchPipe } from './tickets/search.pipe';
+import { NgReduxModule, NgRedux, DevToolsExtension } from '@angular-redux/store';
+import { createLogger } from 'redux-logger';
+import { LoaderComponent } from './loader';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,7 @@ import { SearchPipe } from './tickets/search.pipe';
     StudentPageComponent,
     StudentDetailComponent,
     SearchPipe,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,9 +40,29 @@ import { SearchPipe } from './tickets/search.pipe';
     AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,
+    NgReduxModule,
   ],
   providers: [TicketService, StudentService],
   bootstrap: [AppComponent]
 })
+
 export class AppModule {
+  // constructor(
+  //   private ngRedux: NgRedux<IAppState>,
+  //   private devTools: DevToolsExtension) {
+
+  //   let enhancers = [];
+  //   // ... add whatever other enhancers you want.
+
+  //   // You probably only want to expose this tool in devMode.
+  //   if (devTools.isEnabled()) {
+  //     enhancers = [...enhancers, devTools.enhancer()];
+  //   }
+
+  //   this.ngRedux.configureStore(
+  //     rootReducer,
+  //     initialState,
+  //     [],
+  //     enhancers);
+  // }
 }
