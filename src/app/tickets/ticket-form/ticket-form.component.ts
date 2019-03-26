@@ -66,6 +66,12 @@ export class TicketFormComponent implements OnInit {
     this.students.removeAt(index);
   }
 
+  resetStudentForm() {
+    for (let i = this.students.length - 1; i > 0; i--) {
+      this.students.removeAt(i);
+    }
+  }
+
   addTicket() {
     const rawTicket = this.ticketForm.getRawValue();
 
@@ -83,6 +89,7 @@ export class TicketFormComponent implements OnInit {
     newTicket['studentId'] = studentsFormArray;
     newTicket.archived = false;
     this.ticketService.addTicket(newTicket);
+    this.resetStudentForm();
     this.ticketForm.reset();
   }
 

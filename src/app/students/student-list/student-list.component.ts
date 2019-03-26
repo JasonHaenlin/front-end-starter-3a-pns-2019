@@ -1,3 +1,4 @@
+import { LoaderService } from './../../loader/loader.service';
 import { StudentService } from './../../../services/student/student.service';
 
 import { Student } from 'src/models/Student';
@@ -32,14 +33,21 @@ export class StudentListComponent implements OnInit {
   public studentList: Student[] = [];
   private debounce = true;
 
-  constructor(public studentService: StudentService) { }
+  constructor(public studentService: StudentService,
+    private loader: LoaderService) { }
 
   ngOnInit() {
     this.searchTerms$.pipe(
       debounceTime(300),
       distinctUntilChanged(),
-      switchMap((term: string) => this.studentService.searchStudent(term)),
-    ).subscribe(s => this.studentList = s);
+      switchMap((term: string) => {
+        this.loader.show();
+        return this.studentService.searchStudent(term);
+      }),
+    ).subscribe(s => {
+      this.studentList = s;
+      this.loader.hide();
+    });
     this.search('');
 
     this.studentService.student$.subscribe(s => this.studentList = s);

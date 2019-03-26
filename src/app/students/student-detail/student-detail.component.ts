@@ -1,12 +1,13 @@
-import { Ticket } from './../../../models/Ticket';
-import { StudentService } from './../../../services/student/student.service';
+import { animate, style, transition, trigger } from '@angular/animations';
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription, forkJoin } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { Student } from './../../../models/Student';
-import { trigger, state, style, transition, animate } from '@angular/animations';
+import { Ticket } from './../../../models/Ticket';
+import { StudentService } from './../../../services/student/student.service';
+import { LoaderService } from './../../loader/loader.service';
 
 @Component({
   selector: 'app-student-detail',
@@ -36,23 +37,28 @@ export class StudentDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private location: Location,
-    private studentService: StudentService
+    private studentService: StudentService,
+    private loader: LoaderService
   ) {
     console.log('student-detail-co');
   }
 
   ngOnInit() {
     console.log('student-detail-co init');
-
+    this.loader.show();
     this.route.data
       .subscribe((data: { student: Student }) => {
         this.student = data.student;
         if (this.student.note) {
           this.note.setValue(this.student.note);
+          this.loader.hide();
         }
       });
     this.studentService.getTicketsOfStudentId(+this.route.snapshot.paramMap.get('id'))
-      .subscribe(t => this.ticketList = t);
+      .subscribe(t => {
+        this.ticketList = t;
+        this.loader.hide();
+      });
   }
 
   goBack() {

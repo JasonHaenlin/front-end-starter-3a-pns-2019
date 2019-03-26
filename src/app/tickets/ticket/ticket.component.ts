@@ -12,8 +12,7 @@ export class TicketComponent implements OnInit {
    * Inputs & Output allow communication between parent & child components.
    * More information: https://angular.io/guide/component-interaction
    */
-  @Input()
-  ticket: Ticket;
+  @Input() ticket: Ticket;
 
   @Output() ticketHasBeenSelected: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() ticketHasBeenDeleted: EventEmitter<Ticket> = new EventEmitter<Ticket>();

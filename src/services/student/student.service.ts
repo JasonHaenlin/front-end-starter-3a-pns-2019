@@ -1,3 +1,4 @@
+import { LoaderService } from './../../app/loader/loader.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs/index';
@@ -17,7 +18,8 @@ export class StudentService {
 
   public student$: BehaviorSubject<Student[]> = new BehaviorSubject([]);
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+    private loader: LoaderService) {
     this.loadStudents();
     console.log('student service');
   }
@@ -78,11 +80,13 @@ export class StudentService {
   }
 
   loadStudents(): void {
+    this.loader.show();
     this.http.get<Student[]>(url, HTTP_OPTIONS)
       .pipe(shareReplay(1))
       .subscribe(s => {
         this.studentList = s;
         this.student$.next(this.studentList);
+        this.loader.hide();
       },
         err => console.log('Error retrieving students list'));
   }
